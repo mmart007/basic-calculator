@@ -3,35 +3,47 @@
     margin:0;
 }
 
+#display{
+    display: flex;
+    height: 32px;
+    width: 126px;
+    border: 1px solid rgb(158, 156, 156);
+    align-items: center;
+    justify-content:end;
+    padding-right: 6px;
+    margin-bottom: 2px;
+}
+
 #buttons{
     display: flex;
+    gap: 2px;
 }
-#numbers {
+#numbers, #operators {
     display: flex;
     flex-direction: column;
+    gap: 2px;
 }
 
 .num-row{
     display: flex;
+    gap: 2px;
 }
 
 .numbers{
     background-color: rgb(202, 201, 201);
     width: 32px;
+
 }
 
 #clear{
-    width: 64px;
+    width: 66px;
 }
 
 #equal{
-    width: 96px;
+    width: 100px;
 }
 
 .operators{
-    display: flex;
     width: 32px;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(209, 158, 29)
+    background-color: rgb(209, 158, 29);
 }
