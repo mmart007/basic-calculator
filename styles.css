@@ -1,0 +1,37 @@
+*{
+    padding:0;
+    margin:0;
+}
+
+#buttons{
+    display: flex;
+}
+#numbers {
+    display: flex;
+    flex-direction: column;
+}
+
+.num-row{
+    display: flex;
+}
+
+.numbers{
+    background-color: rgb(202, 201, 201);
+    width: 32px;
+}
+
+#clear{
+    width: 64px;
+}
+
+#equal{
+    width: 96px;
+}
+
+.operators{
+    display: flex;
+    width: 32px;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(209, 158, 29)
+}
