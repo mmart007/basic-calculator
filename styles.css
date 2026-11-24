@@ -1,21 +1,31 @@
 *{
     padding:0;
     margin:0;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+#container{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    width: 50vw;
+    height: 75vh;
 }
 
 #display{
     display: flex;
-    height: 32px;
-    width: 126px;
+    height: 15%;
     border: 1px solid rgb(158, 156, 156);
     align-items: center;
-    justify-content:end;
-    padding-right: 6px;
-    margin-bottom: 2px;
+    justify-content: flex-end;
+    padding-right: 12px;
+    font-size: 1.5rem;
 }
 
 #buttons{
     display: flex;
+    flex: 1;
     gap: 2px;
 }
 #numbers, #operators {
@@ -24,26 +34,37 @@
     gap: 2px;
 }
 
+#numbers{
+    flex:3;
+}
+
+#operators{
+    flex:1;
+}
+
 .num-row{
     display: flex;
     gap: 2px;
+    flex:1;
 }
 
 .numbers{
     background-color: rgb(202, 201, 201);
-    width: 32px;
+    flex: 1;
 
 }
 
 #clear{
-    width: 66px;
+    flex: 2;
 }
 
 #equal{
-    width: 100px;
+    flex: 1;
+    background-color: rgb(209, 158, 29);
+
 }
 
 .operators{
-    width: 32px;
+    flex: 1;
     background-color: rgb(209, 158, 29);
 }
