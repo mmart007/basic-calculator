@@ -1,5 +1,6 @@
 let num1='';
 let num2='';
+let prevDec = false;
 let operator='';
 let result = 0;
 let numberOperations = 0;
@@ -9,6 +10,7 @@ const numbers = document.querySelectorAll('.numbers');
 const operators = document.querySelectorAll('.operators');
 const equal = document.querySelector('#equal')
 const clear = document.querySelector('#clear')
+const del = document.querySelector('#delete')
 
 //Create object of operations for operate function
 const operations = {
@@ -32,13 +34,17 @@ function storeNumber(digit) {
     if(equalPress){
             reset();
     }
-        if(operator===''){
-        num1 += digit;
-        console.log(`First number is ${num1}`);
+    if (display.textContent.includes(".") && digit ==='.') {
+
     } else {
-        num2 += digit;
-        console.log(`Second number is ${num2}`);
-    } 
+        if(operator==='') { 
+            num1 += digit;
+            display.textContent = num1; 
+        } else {
+            num2 += digit;
+            display.textContent = num2;
+        }
+    }
 }
 
 function handleOperator(clickedOperator){
@@ -52,13 +58,32 @@ function handleOperator(clickedOperator){
             display.textContent = 'Enter a number first';
         } else {  
         operator = clickedOperator;
-        console.log(operator)
         }    
 }
 
 function handleEqual () {
     operate(num1, num2, operator);
     equalPress=true;
+}
+
+function handleDelete () {
+   if(operator === ''){  
+        num1=num1.slice(0,-1);
+        display.textContent=num1;
+    } else {
+        num2=num2.slice(0,-1);
+        display.textContent=num2;
+    }
+}
+
+const reset = () => {
+    num1='';
+    num2='';
+    operator='';
+    numberOperations=0;
+    result=0;
+    display.textContent=result;
+    equalPress=false;
 }
 
 numbers.forEach(number => {
@@ -77,13 +102,17 @@ equal.addEventListener('click', (event) => {
    handleEqual();
 });
 
+del.addEventListener('click', (event) => {
+   handleDelete();
+});
+
 clear.addEventListener('click', (event)=> {
     reset();
 })
 
 document.addEventListener('keydown', (event) => {
-    // Check if the pressed key is a single digit from '0' to '9'
-    if (event.key >= '0' && event.key <= '9') {
+    // Check if the pressed key is a single digit from '0' to '9' or a decimal point
+    if (event.key==='.' || (event.key >= '0' && event.key <= '9')) {
         storeNumber(event.key);
     } 
     // Check if the pressed key is one of the 4 operator symbols
@@ -95,25 +124,17 @@ document.addEventListener('keydown', (event) => {
     }
     //treat the equal or enter keys as the equals button
     if (event.key === '=' || event.key === 'Enter'){
+        event.preventDefault();
         handleEqual();
     }
+
+    //trigger delete if backspace is pushed
+    if (event.key === 'Backspace'){
+        handleDelete();
+    }
+
     //treat the esc or delete key as clear
     if (event.key === 'Escape' || event.key ==='Delete'){
         reset();
     }
 });
-
-
-
-
-
-const reset = () => {
-    num1='';
-    num2='';
-    operator='';
-    numberOperations=0;
-    result=0;
-    display.textContent=result;
-    equalPress=false;
-}
-
